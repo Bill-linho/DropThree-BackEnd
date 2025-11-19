@@ -8,11 +8,33 @@ const pool = new Pool({
     user: 'local',
     host: 'localhost',
     database: 'DropThree',
-    password: '123',
+    password: '12345',
     port: '5432'
 })
 
 const server = fastify()
+
+await server.register(cors, {
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+})
+
+server.get('/usuario', async (req, reply) => {
+    try {
+        const result = await pool.query('SELECT * FROM usuario');
+
+        return reply.status(200).send({
+            mensagem: 'Sucesso',
+            dados: result.rows
+        });
+
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({
+            mensagem: 'Deu ruim'
+        });
+    }
+});
 
 server.post('/usuario', async (req, reply) => {
     const { nome, email, telefone, senha_hash} = req.body;
