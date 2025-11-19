@@ -1,5 +1,15 @@
 {
+  "name": "meu-servidor",
+  "version": "1.0.0",
+  "description": "API em Fastify com PostgreSQL",
+  "type": "module",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node --watch serve.js"
+  },
   "dependencies": {
+    "@fastify/cors": "^11.1.0",
     "fastify": "^5.6.2",
     "pg": "^8.16.3"
   }
