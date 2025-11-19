@@ -27,6 +27,7 @@ server.post('/usuario', async (req, reply) => {
         reply.status(500).send({ error: e.message })
     }
 })
+
 server.listen({
     port: 3000,
     host: '0.0.0.0'
