@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import pkg from "pg";
 import cors from "@fastify/cors";
+import bcrypt from "bcrypt";
 
 const { Pool } = pkg;
 
@@ -37,18 +38,28 @@ server.get('/usuario', async (req, reply) => {
 });
 
 server.post('/usuario', async (req, reply) => {
-    const { nome, email, telefone, senha_hash} = req.body;
+    const { nome, email, telefone, senha } = req.body;
 
     try {
-        const response = await pool.query(
-            'INSERT INTO USUARIO ( nome, email, telefone, senha_hash) VALUES ($1, $2, $3, $4) RETURNING *',
+        // 🔐 Gerar hash da senha
+        const senha_hash = await bcrypt.hash(senha, 10);
+
+        const result = await pool.query(
+            'INSERT INTO USUARIO (nome, email, telefone, senha_hash) VALUES ($1, $2, $3, $4) RETURNING *',
             [nome, email, telefone, senha_hash]
-        )
-        reply.status(200).send(response.rows)
-    } catch (e) {
-        reply.status(500).send({ error: e.message })
+        );
+
+        return reply.status(200).send({
+            mensagem: 'Sucesso',
+            dados: result.rows
+        });
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({
+            mensagem: 'Deu ruim'
+        });
     }
-})
+});
 
 server.listen({
     port: 3000,

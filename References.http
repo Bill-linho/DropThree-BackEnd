@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "nome": "Gabriel",
-    "email": "gabi@gmail.com",
+    "email": "gabi3@gmail.com",
     "telefone": "(48) 9 9999-9999",
-    "senha_hash": "nadaaqui"
+    "senha": "421421"
 }
