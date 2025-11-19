@@ -41,7 +41,7 @@ server.post('/usuario', async (req, reply) => {
     const { nome, email, telefone, senha } = req.body;
 
     try {
-        // 🔐 Gerar hash da senha
+        // Gerar hash(Criptografia) da senha
         const senha_hash = await bcrypt.hash(senha, 10);
 
         const result = await pool.query(
@@ -60,6 +60,25 @@ server.post('/usuario', async (req, reply) => {
         });
     }
 });
+
+server.delete('/usuario/:id', async (req, reply) => {
+    const id = req.params.id;
+    try {
+        await pool.query(
+            'DELETE FROM USUARIO WHERE ID_USUARIO = $1',
+            [id]
+        )
+        return reply.status(200).send({
+            mensagem: 'Sucesso',
+        });
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({
+            mensagem: 'Deu ruim'
+        });
+    }
+
+})
 
 server.listen({
     port: 3000,

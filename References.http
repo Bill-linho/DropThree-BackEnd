@@ -7,7 +7,11 @@ Content-Type: application/json
 
 {
     "nome": "Gabriel",
-    "email": "gabi3@gmail.com",
+    "email": "gabi33@gmail.com",
     "telefone": "(48) 9 9999-9999",
-    "senha": "421421"
+    "senha": "42132"
 }
+
+###
+
+DELETE http://localhost:3000/usuario/2

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "API em Fastify com PostgreSQL",
   "type": "module",
-  "main": "serve.js",
+  "main": "Serve.js",
   "scripts": {
-    "start": "node serve.js",
-    "dev": "node --watch serve.js"
+    "start": "node Serve.js",
+    "dev": "node --watch Serve.js"
   },
   "dependencies": {
     "@fastify/cors": "^11.1.0",
