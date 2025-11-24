@@ -41,7 +41,7 @@ server.post('/usuario', async (req, reply) => {
     const { nome, email, telefone, senha } = req.body;
 
     try {
-        // Gerar hash(Criptografia) da senha
+       
         const senha_hash = await bcrypt.hash(senha, 10);
 
         const result = await pool.query(
@@ -79,6 +79,43 @@ server.delete('/usuario/:id', async (req, reply) => {
     }
 
 })
+server.get('/produto', async (req, reply) => {
+    try {
+        const result = await pool.query('SELECT * FROM produto');
+
+        return reply.status(200).send({
+            mensagem: 'Sucesso',
+            dados: result.rows
+        });
+
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({
+            mensagem: 'Deu ruim'
+        });
+    }
+});
+server.post('/produto', async (req, reply) => {
+    const { nome_pedido, url, descricao } = req.body;
+
+    try {
+        const result = await pool.query(
+            'INSERT INTO produto (nome_pedido, url, descricao) VALUES ($1, $2, $3) RETURNING *',
+            [ nome_pedido, url, descricao]
+        );
+
+        return reply.status(200).send({
+            mensagem: 'Sucesso',
+            dados: result.rows
+        });
+    } catch (error) {
+        console.error(error);
+        return reply.status(500).send({
+            mensagem: 'Deu ruim'
+        });
+    }
+});
+
 
 server.listen({
     port: 3000,

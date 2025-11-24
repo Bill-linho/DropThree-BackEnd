@@ -15,3 +15,18 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/usuario/2
+
+###
+
+GET http://localhost:3000/produto
+
+###
+
+POST http://localhost:3000/produto
+Content-Type: application/json
+
+{
+    "nome_pedido": "Gabriel",
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2w2srfsVMyOtv4HgMwJCWZu3jtmbojY2QA&s",
+    "descricao": "é o gabriel, faça o l"
+}
