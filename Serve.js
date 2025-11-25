@@ -96,12 +96,12 @@ server.get('/produto', async (req, reply) => {
     }
 });
 server.post('/produto', async (req, reply) => {
-    const { nome_pedido, url, descricao } = req.body;
+    const { nome_pedido, url, descricao, direcionamento } = req.body;
 
     try {
         const result = await pool.query(
-            'INSERT INTO produto (nome_pedido, url, descricao) VALUES ($1, $2, $3) RETURNING *',
-            [ nome_pedido, url, descricao]
+            'INSERT INTO produto (nome_pedido, url, descricao, direcionamento) VALUES ($1, $2, $3, $4) RETURNING *',
+            [ nome_pedido, url, descricao, direcionamento]
         );
 
         return reply.status(200).send({

@@ -28,5 +28,6 @@ Content-Type: application/json
 {
     "nome_pedido": "Gabriel",
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2w2srfsVMyOtv4HgMwJCWZu3jtmbojY2QA&s",
-    "descricao": "é o gabriel, faça o l"
+    "descricao": "é o gabriel, faça o l",
+    "direcionamento":"https://www.youtube.com/@alanzoka"
 }
