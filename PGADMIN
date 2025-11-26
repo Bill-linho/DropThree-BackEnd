@@ -13,6 +13,68 @@ CREATE TABLE PRODUTO (
     URL VARCHAR(250) NOT NULL,
     DESCRICAO TEXT NOT NULL,
     DIRECIONAMENTO VARCHAR(2100) NOT NULL
+); 
+
+INSERT INTO produto (nome_produto, url, descricao, direcionamento) VALUES
+(
+  'Samsung Galaxy A56 5G Dual SIM (256 GB) - 8 GB RAM - Grafite',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_981466-MLA96102898505_102025-F.webp',
+  'Intermediário premium 5G. Tela Super AMOLED 6.7" 120Hz. Câmera principal 50MP. Bateria 5000mAh com carregamento rápido.',
+  'https://www.mercadolivre.com.br/samsung-galaxy-a56-5g-dual-sim-256-gb-awesome-graphite-8-gb-ram/p/MLB51032045'
+),
+(
+  'Samsung Galaxy A05s 4G (128GB/6GB RAM) - Câmera 50MP - Preto',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_994900-MLA95712550162_102025-F.webp',
+  'Modelo de entrada, com bom desempenho. Tela 6.7" FHD+. Processador Snapdragon 680. Câmera Tripla 50MP e bateria de 5000mAh.',
+  'https://www.mercadolivre.com.br/smartphone-samsung-galaxy-a05s-4g-128gb-6gb-ram-cmera-traseira-tripla-50mp-2mp-2mp-selfie-13mp-tela-67-preto/p/MLB29761272'
+),
+(
+  'Samsung Galaxy A16 5G (128GB/4GB RAM) - Câmera 50MP - Azul Escuro',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_997747-MLA97477696271_112025-F.webp',
+  'Entrada 5G com tela de alta qualidade. Tela Super AMOLED 6.7" (120Hz). Câmera Tripla 50MP. Bateria 5000mAh. Possui resistência IP54.',
+  'https://www.mercadolivre.com.br/smartphone-samsung-galaxy-a16-5g-128gb-4gb-ram-azul/p/MLB44119805'
+),
+(
+  'Xiaomi Redmi Note 15 Pro 5G (512GB/12GB RAM) - Camera 108MP',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_994994-MLA95740846126_102025-F.webp',
+  'Alto desempenho 5G. Armazenamento massivo de 512GB/12GB RAM. Câmera Pro-Grade de 108MP. Bateria de 5500 mAh.',
+  'https://www.mercadolivre.com.br/xiaomi-redmi-note-15-pro-5g-512gb-12gb-ram/p/MLB55762040'
+),
+(
+  'Motorola Moto G56 5G (256GB/16GB RAM) Verde',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_940563-MLA96086640457_102025-F.webp',
+  'Intermediário focado em multimídia. 256GB/16GB RAM. Tela 6.7" 120Hz. Câmera 50MP OIS. Bateria 5200 mAh. Certificado Militar.',
+  'https://www.mercadolivre.com.br/smartphone-motorola-moto-g56-5g-256gb-16gb-ram-verde/p/MLB50302985'
+),
+(
+  'GABRIEL V',
+  'https://avatars.githubusercontent.com/u/212985724?v=4',
+  'PROGRAMADOR DE APLICATIVO SUPER CONFIÁVEL',
+  'https://github.com/Bill-linho'
+),
+(
+  'FIFA EA Sports FC26 PS4 Físico Standard',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_766402-MLA94698782928_102025-F.webp',
+  'O simulador de futebol mais aclamado, agora com a marca EA Sports FC26. Experimente o realismo, modos de jogo populares (Ultimate Team, Modo Carreira) e gráficos de última geração.',
+  'https://www.mercadolivre.com.br/fifa-ea-sports-fc26-ps4-fisico-standard/p/MLB54079776'
+),
+(
+  'Assassin’s Creed The Ezio Collection Standard Edition PS4 Físico',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_934665-MLA95671230860_102025-F.webp',
+  'Reviva a saga completa de Ezio Auditore da Firenze em gráficos aprimorados. Inclui os jogos Assassin’s Creed II, Brotherhood e Revelations.',
+  'https://www.mercadolivre.com.br/assassins-creed-the-ezio-collection-standard-edition-ps4-fisico/p/MLB7973396'
+),
+(
+  'The Witcher 3: Wild Hunt Standard Edition PS4 Físico',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_939210-MLA96143927453_102025-F.webp',
+  'Um RPG épico de mundo aberto onde você é Geralt de Rivia, um caçador de monstros. Explore um continente vasto, tome decisões que afetam a história e cace feras em um universo maduro.',
+  'https://www.mercadolivre.com.br/the-witcher-3-wild-hunt-standard-edition-ps4-fisico/p/MLB15318003'
+),
+(
+  'Dragon Ball Fighter Z PS4 Mídia Física',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_935913-MLA96418396652_102025-F.webp',
+  'Jogo de luta 2.5D com gráficos inspirados no anime e jogabilidade de alta velocidade. Batalhas épicas 3v3 com seus personagens favoritos de Dragon Ball.',
+  'https://www.mercadolivre.com.br/dragon-ball-fighter-z-ps4-midia-fisica/p/MLB8938633'
 );
 
 CREATE OR REPLACE FUNCTION CONTROLE_DE_ESTOQUE()
