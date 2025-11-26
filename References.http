@@ -26,8 +26,8 @@ POST http://localhost:3000/produto
 Content-Type: application/json
 
 {
-    "nome_produto": "Gabriel",
-    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM2w2srfsVMyOtv4HgMwJCWZu3jtmbojY2QA&s",
-    "descricao": "é o gabriel, faça o l",
-    "direcionamento":"https://www.youtube.com/@alanzoka"
+  "nome_produto": "Smartphone Motorola Edge 60 Fusion 5G - 256GB 16GB (8GB RAM + 8GB Boost) 50MP Sony AI Camera IP68 NFC - Cinza Vegan Leather",
+  "url": "https://http2.mlstatic.com/D_NQ_NP_2X_857703-MLA97091350851_112025-F.webp",
+  "descricao": "Lançabra de 520aloeira.",
+  "direcionamento": "https://www.mercadolivre.com.br/smartphone-motorola-edge-60-fusion-5g-256gb-16gb-8gb-ram8gb-ram-boost-50mp-sony-ai-camera-ip68-nfc-cinza-vegan-leather/p/MLB47245501"
 }
