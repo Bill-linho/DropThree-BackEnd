@@ -17,7 +17,21 @@ Content-Type: application/json
 DELETE http://localhost:3000/usuario/2
 
 ###
+GET http://localhost:3000/categoria
 
+###
+
+POST http://localhost:3000/categoria
+Content-Type: application/json
+
+{
+    "nome": ""
+}
+
+###
+DELETE http://localhost:3000/categorias/2
+
+###
 GET http://localhost:3000/produto
 
 ###

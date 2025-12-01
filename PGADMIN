@@ -6,13 +6,19 @@ TELEFONE VARCHAR(20),
 SENHA_HASH VARCHAR(80) NOT NULL,
 DATA_ATIVACAO TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE CATEGORIA (
+    ID_CATEGORIA SERIAL PRIMARY KEY,
+    NOME VARCHAR(100) UNIQUE NOT NULL,
+    DATA_CRIACAO TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE PRODUTO (
     ID_PRODUTO SERIAL PRIMARY KEY,
     NOME_PRODUTO VARCHAR(180) NOT NULL,
     URL VARCHAR(250) NOT NULL,
     DESCRICAO TEXT NOT NULL,
-    DIRECIONAMENTO VARCHAR(2100) NOT NULL
+    DIRECIONAMENTO VARCHAR(2100) NOT NULL,
+    ID_CATEGORIA INT REFERENCES CATEGORIA(ID_CATEGORIA)
 ); 
 
 INSERT INTO produto (nome_produto, url, descricao, direcionamento) VALUES
@@ -75,6 +81,84 @@ INSERT INTO produto (nome_produto, url, descricao, direcionamento) VALUES
   'https://http2.mlstatic.com/D_NQ_NP_2X_935913-MLA96418396652_102025-F.webp',
   'Jogo de luta 2.5D com gráficos inspirados no anime e jogabilidade de alta velocidade. Batalhas épicas 3v3 com seus personagens favoritos de Dragon Ball.',
   'https://www.mercadolivre.com.br/dragon-ball-fighter-z-ps4-midia-fisica/p/MLB8938633'
+),
+(
+  'Notebook Lenovo IdeaPad Slim 3 - i5-13420H - 16GB RAM - 512GB SSD',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_708611-MLA99896047685_112025-F.webp',
+  'Notebook Slim de alto desempenho. Processador Intel Core i5 (13ª Geração), 16GB de RAM e rápido SSD de 512GB. Ideal para multitarefas e produtividade.',
+  'https://www.mercadolivre.com.br/notebook-lenovo-ideapad-slim-3-15irh10-intel-core-i5-13420h-16gb-512gb-ssd-windows-11-153-83ns0001br-luna-grey/p/MLB51233306'
+),
+(
+  'Notebook Positivo Vision C14 Lumina Bar - Celeron - 8GB - 128GB eMMC',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_622088-MLA99728699895_112025-F.webp',
+  'Modelo de entrada focado em portabilidade. Processador Celeron, 8GB RAM e 128GB eMMC. Tela 14" HD antirreflexo e design com Lumina Bar. Ideal para estudos e tarefas básicas.',
+  'https://www.mercadolivre.com.br/notebook-positivo-vision-c14-lumina-bar-celeron-8gb-128gb-emmc-tela-14-polegadas-hd-antirreflexo-windows-11-tecla-link-cinza/p/MLB56724643'
+),
+(
+  'Notebook HP 256R G9 - i3-1315U - 8GB RAM - 256GB SSD',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_774849-MLA99987332081_112025-F.webp',
+  'Equipamento HP confiável para o dia a dia. Processador Intel Core i3 (13ª Geração), 8GB RAM e SSD de 256GB. Tela 15.6" HD com gráficos Intel UHD.',
+  'https://www.mercadolivre.com.br/notebook-hp-256r-g9-intel-core-i3-1315u-156-hd-intel-uhd-graphics-256gb-ssd-8gb-ram-windows-11-home-64-sl-bq9k8atak4/p/MLB53005060'
+),
+(
+  'Notebook Lenovo IdeaPad 1 - i3-1315U - 8GB RAM - 256GB SSD',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_718154-MLA99988492837_112025-F.webp',
+  'Notebook leve e eficiente. Processador Intel Core i3 (13ª Geração), 8GB RAM e SSD de 256GB. Excelente custo-benefício para uso doméstico e escritório.',
+  'https://www.mercadolivre.com.br/notebook-lenovo-ideapad-1-15iru7-intel-core-i3-1315u-8gb-256gb-ssd-windows-11-156-83qj0001bo-cloud-grey/p/MLB52907400'
+),
+(
+  'Notebook HP ProBook 440 G11 - Ultra 5 125U - 16GB RAM - 512GB SSD',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_798164-MLA98124845331_112025-F.webp',
+  'Modelo Profissional com foco em IA. Processador Intel Core Ultra 5, 16GB RAM e 512GB SSD. Ideal para empresas e usuários que precisam de alto poder de processamento e segurança.',
+  'https://www.mercadolivre.com.br/notebook-hp-ia-pc-probook-14-440-g11-i-intel-core-ultra-5-125u-16gb-ram-ssd-512gb-windows-11-home-sku-cl5x4la/p/MLB57503810'
+),
+(
+  'Kit 2 Baterias Recarregáveis LIP1522 para Controle PS4',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_602585-MLB95720468080_102025-F-kit-de-2-baterias-recarregaveis-lip1522-plug-45mm-para-ps4.webp',
+  'Kit com duas baterias de reposição de longa duração (LIP1522) para controles DualShock 4 de PS4. Garante mais horas de jogo sem interrupções.',
+  'https://produto.mercadolivre.com.br/MLB-5846681038-kit-de-2-baterias-recarregaveis-lip1522-plug-45mm-para-ps4-_JM'
+),
+(
+  'Kit 8 Grip Analógico Antiderrapante PS5, PS4 e Xbox',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_973934-MLB89219823292_082025-F-kit-8-grip-analogico-ps5-ps4-xbox-antiderrapante-controle.webp',
+  'Kit com 8 protetores de silicone antiderrapante para analógicos. Aumenta a precisão e o conforto durante longas sessões de jogo, compatível com PS5, PS4 e Xbox.',
+  'https://produto.mercadolivre.com.br/MLB-5370702482-kit-8-grip-analogico-ps5-ps4-xbox-antiderrapante-controle-_JM?searchVariation=187757166679'
+),
+(
+  'Controle PS4 com Paddles Traseiros Programáveis e Botão Turbo',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_767163-MLB96786279652_112025-F-controle-ps4-paddles-traseiros-programavel-boto-turbo-preto.webp',
+  'Controle profissional para PS4 com botões traseiros (paddles) totalmente programáveis. Melhora o tempo de reação e inclui função turbo para vantagens competitivas.',
+  'https://produto.mercadolivre.com.br/MLB-4288571581-controle-ps4-paddles-traseiros-programavel-boto-turbo-preto-_JM'
+),
+(
+  'Suporte de Jogos Organizador para até 5 Caixas - Branco',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_887651-MLA96687526743_102025-F.webp',
+  'Organizador vertical para armazenar até 5 caixas de jogos de PS4, PS5, Xbox ou Nintendo Switch. Mantém sua área de jogos limpa e os títulos acessíveis.',
+  'https://www.mercadolivre.com.br/suporte-de-jogos-organizador-p-ate-5-caixas-acessorio-gamer-cor-branco/p/MLB51394524'
+),
+(
+  'Bolsa de Viagem Reforçada para Console PS4 e Acessórios',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_623233-MLB99794092527_112025-F-bolsa-de-viagem-para-console-ps4-e-acessorios-.webp',
+  'Mala de transporte robusta e acolchoada, projetada especificamente para proteger o console PS4, cabos e controles durante viagens ou armazenamento.',
+  'https://produto.mercadolivre.com.br/MLB-5981639750-bolsa-de-viagem-para-console-ps4-e-acessorios--_JM'
+),
+(
+  'Base Carregador Duplo Dock Charge para Controle PS4 com LED',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_977652-MLB98676916483_112025-F-base-carregador-duplo-dock-charge-para-controle-ps4-top-led.webp',
+  'Base de carregamento que permite recarregar dois controles de PS4 simultaneamente. Possui indicador LED para mostrar o status da carga.',
+  'https://produto.mercadolivre.com.br/MLB-5945025692-base-carregador-duplo-dock-charge-para-controle-ps4-top-led-_JM?searchVariation=187190062056'
+),
+(
+  'Controle PS4 Sem Fio Paralelo Double Motor Vibration - Preto',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_745299-MLB52536921586_112022-F.webp',
+  'Controle sem fio compatível com PS4, com função de vibração (Double Motor Vibration). Uma alternativa acessível para ter um controle extra para multiplayer.',
+  'https://www.mercadolivre.com.br/controle-para-ps4-sem-fio-paralelo-double-motor-vibration-4-rd-acessorios-preto/p/MLB21018596'
+),
+(
+  'Capa para PS4 Slim Antipoeira PlayStation Protetora Console',
+  'https://http2.mlstatic.com/D_NQ_NP_2X_650879-MLB88863095970_082025-F-capa-para-ps4-slim-antipoeira-playstation-protetora-console.webp',
+  'Capa de proteção projetada especificamente para o PS4 Slim. Protege contra poeira, sujeira e riscos quando o console não está em uso.',
+  'https://produto.mercadolivre.com.br/MLB-834472996-capa-para-ps4-slim-antipoeira-playstation-protetora-console-_JM?searchVariation=35495737393'
 );
 
 CREATE OR REPLACE FUNCTION CONTROLE_DE_ESTOQUE()

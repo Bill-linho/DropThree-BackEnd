@@ -6,18 +6,18 @@ import bcrypt from "bcrypt";
 const { Pool } = pkg;
 
 const pool = new Pool({
-    user: 'local',
-    host: 'localhost',
-    database: 'DropThree',
-    password: '12345',
-    port: '5432'
+  user: 'local',
+  host: 'localhost',
+  database: 'DropThree',
+  password: '12345',
+  port: '5432'
 })
 
 const server = fastify()
 
 await server.register(cors, {
-    origin: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 })
 
 server.get('/usuario', async (req, reply) => {
@@ -61,58 +61,58 @@ server.post('/usuario', async (req, reply) => {
 });
 
 server.delete('/usuario/:id', async (req, reply) => {
-    const id = req.params.id;
-    try {
-        await pool.query(
-            'DELETE FROM USUARIO WHERE ID_USUARIO = $1',
-            [id]
-        )
-        return reply.status(200).send({
-            mensagem: 'Sucesso',
-        });
-    } catch (error) {
-        console.error(error);
-        return reply.status(500).send({
-            mensagem: 'Deu ruim'
-        });
-    }
+  const id = req.params.id;
+  try {
+    await pool.query(
+      'DELETE FROM USUARIO WHERE ID_USUARIO = $1',
+      [id]
+    )
+    return reply.status(200).send({
+      mensagem: 'Sucesso',
+    });
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send({
+      mensagem: 'Deu ruim'
+    });
+  }
 
 })
 server.get('/produto', async (req, reply) => {
-    try {
-        const result = await pool.query('SELECT * FROM produto');
+  try {
+    const result = await pool.query('SELECT * FROM produto');
 
-        return reply.status(200).send({
-            mensagem: 'Sucesso',
-            dados: result.rows
-        });
+    return reply.status(200).send({
+      mensagem: 'Sucesso',
+      dados: result.rows
+    });
 
-    } catch (error) {
-        console.error(error);
-        return reply.status(500).send({
-            mensagem: 'Deu ruim'
-        });
-    }
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send({
+      mensagem: 'Deu ruim'
+    });
+  }
 });
 server.post('/produto', async (req, reply) => {
-    const { nome_produto, url, descricao, direcionamento } = req.body;
+  const { nome_produto, url, descricao, direcionamento, id_categoria } = req.body;
 
-    try {
-        const result = await pool.query(
-            'INSERT INTO produto (nome_produto, url, descricao, direcionamento) VALUES ($1, $2, $3, $4) RETURNING *',
-            [ nome_produto, url, descricao, direcionamento]
-        );
+  try {
+    const result = await pool.query(
+      'INSERT INTO produto (nome_produto, url, descricao, direcionamento, id_categoria) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [nome_produto, url, descricao, direcionamento, id_categoria]
+    );
 
-        return reply.status(200).send({
-            mensagem: 'Sucesso',
-            dados: result.rows
-        });
-    } catch (error) {
-        console.error(error);
-        return reply.status(500).send({
-            mensagem: 'Deu ruim'
-        });
-    }
+    return reply.status(200).send({
+      mensagem: 'Sucesso',
+      dados: result.rows
+    });
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send({
+      mensagem: 'Deu ruim'
+    });
+  }
 });
 
 server.post('/login', async (req, reply) => {
@@ -149,10 +149,48 @@ server.post('/login', async (req, reply) => {
     return reply.status(500).send({ mensagem: "Erro no servidor." });
   }
 });
+server.get('/categoria', async (req, reply) => {
+  try {
+    const result = await pool.query('SELECT * FROM CATEGORIA ORDER BY NOME ASC');
+    return reply.status(200).send({
+      mensagem: 'Sucesso',
+      dados: result.rows
+    });
+  } catch (error) {
+    console.error(error);
+    return reply.status(500).send({ mensagem: 'Erro ao buscar categorias' });
+  }
+});
+
+server.post('/categoria', async (req, reply) => {
+  const { nome } = req.body;
+
+  try {
+    const resultado = await pool.query(
+      'INSERT INTO CATEGORIA (nome) VALUES ($1) RETURNING *',
+      [nome]
+    )
+    reply.status(200).send(resultado.rows[0])
+  } catch (e) {
+    reply.status(500).send({ error: e.message })
+  }
+})
+server.delete('/categoria/:id', async (req, reply) => {
+  const id = req.params.id;
+  try {
+    await pool.query(
+      'Delete from CATEGORIA where id=$1',
+      [id]
+    )
+    reply.send({ mensagem: "Deu certo!" })
+  } catch (err) {
+    reply.status(500).send({ error: err.message })
+  }
+})
 
 
 
 server.listen({
-    port: 3000,
-    host: '0.0.0.0'
+  port: 3000,
+  host: '0.0.0.0'
 })
